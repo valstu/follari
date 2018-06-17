@@ -18,6 +18,7 @@
     "react-dom": "^16.4.1",
     "react-google-maps": "^9.4.5",
     "react-scripts": "1.1.4",
+    "serve": "^9.0.0",
     "styled-components": "^3.3.2"
   },
   "scripts": {
@@ -25,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "now-start": "serve --single ./build"
   },
   "lint-staged": {
     "*.{js,json,graphql,md,css,scss,less,ts}": [

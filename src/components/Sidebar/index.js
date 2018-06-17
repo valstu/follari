@@ -106,6 +106,9 @@ const Footer = styled.div`
   span {
     margin-bottom: 10px;
   }
+  span:last-child {
+    margin-bottom: 0px;
+  }
   @media (min-width: 768px) {
     display: flex;
   }
@@ -163,7 +166,6 @@ const Sidebar = ({ racks, lastupdate, bikesTotalAvail, onHover, onHoverEnd, onLi
       <Footer>
         <span>Viimeksi päivitetty: {dayjs(lastupdate*1000).format('DD.MM.YYYY [klo] HH:mm:ss')}</span>
         <span>Fork me at <a href="https://github.com/valstu/follari">Github</a> / Twitter: <a href="https://twitter.com/valtterikaresto">@valtterikaresto</a></span>
-        <span></span>
       </Footer>
     </SidebarContainer>
   );
