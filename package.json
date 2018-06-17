@@ -1,0 +1,49 @@
+{
+  "name": "follari.fi",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@ibm/plex": "^1.0.2",
+    "@reach/router": "^1.1.1",
+    "apollo-boost": "^0.1.9",
+    "apollo-link-rest": "^0.3.1",
+    "camelcase": "^5.0.0",
+    "dayjs": "^1.6.9",
+    "graphql": "^0.13.2",
+    "lodash.orderby": "^4.6.0",
+    "polished": "^1.9.2",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.1",
+    "react-apollo": "^2.1.5",
+    "react-dom": "^16.4.1",
+    "react-google-maps": "^9.4.5",
+    "react-scripts": "1.1.4",
+    "styled-components": "^3.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json,graphql,md,css,scss,less,ts}": [
+      "prettier --single-quote --trailing-comma all --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-motley": "9.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.1.0",
+    "prettier": "^1.12.1"
+  }
+}
