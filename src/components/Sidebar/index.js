@@ -8,8 +8,9 @@ const SidebarContainer = styled.div`
   display: flex;
   background: white;
   flex-direction: column;
-  height: 40vh;
+  height: 55vh;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   justify-content: space-between;
   @media (min-width: 768px) {
     height: 100vh;
@@ -30,7 +31,6 @@ const Title = styled.h1`
       margin-right: -0.5rem;
     }
   }
-
 `;
 
 const Subtitle = styled.h2`
@@ -122,7 +122,7 @@ export const getColor = available => {
     return 'orange';
   }
   return 'red';
-}
+};
 
 const AvailabilityIndicator = styled.span`
   display: inline-block;
@@ -134,8 +134,14 @@ const AvailabilityIndicator = styled.span`
   background: ${props => getColor(props.available)};
 `;
 
-const Sidebar = ({ racks, lastupdate, bikesTotalAvail, onHover, onHoverEnd, onListItemClick }) => {
-
+const Sidebar = ({
+  racks,
+  lastupdate,
+  bikesTotalAvail,
+  onHover,
+  onHoverEnd,
+  onListItemClick,
+}) => {
   const orderedRacks = orderby(racks, 'name', 'asc');
 
   const renderRacks = orderedRacks.map(rack => (
@@ -143,11 +149,15 @@ const Sidebar = ({ racks, lastupdate, bikesTotalAvail, onHover, onHoverEnd, onLi
       key={rack.id}
       onMouseEnter={() => onHover(rack.id)}
       onMouseLeave={() => onHoverEnd()}
-      onClick={() => onListItemClick({lat: rack.lat, lng: rack.lon})}
+      onClick={() => onListItemClick({ lat: rack.lat, lng: rack.lon })}
     >
       <RackListItemTitle>{rack.name}</RackListItemTitle>
       <RackListItemContent>
-        <AvailabilityIndicator available={rack.bikesAvail} /><strong>{rack.bikesAvail}/{rack.slotsTotal}</strong> vapaana
+        <AvailabilityIndicator available={rack.bikesAvail} />
+        <strong>
+          {rack.bikesAvail}/{rack.slotsTotal}
+        </strong>{' '}
+        vapaana
       </RackListItemContent>
     </RackListItem>
   ));
@@ -156,42 +166,55 @@ const Sidebar = ({ racks, lastupdate, bikesTotalAvail, onHover, onHoverEnd, onLi
     <SidebarContainer>
       <Header>
         <Title>
-          <span role="img" aria-label="Bike">🚲</span> Fölläri
+          <span role="img" aria-label="Bike">
+            🚲
+          </span>{' '}
+          Fölläri
         </Title>
-        <Subtitle>Nyt <strong>{bikesTotalAvail}</strong> {bikesTotalAvail === 1 ? 'fillari' : 'fillaria'} vapaana!</Subtitle>
+        <Subtitle>
+          Nyt <strong>{bikesTotalAvail}</strong>{' '}
+          {bikesTotalAvail === 1 ? 'fillari' : 'fillaria'} vapaana!
+        </Subtitle>
       </Header>
-      <RackList>
-        {renderRacks}
-      </RackList>
+      <RackList>{renderRacks}</RackList>
       <Footer>
-        <span>Viimeksi päivitetty: {dayjs(lastupdate*1000).format('DD.MM.YYYY [klo] HH:mm:ss')}</span>
-        <span>Fork me at <a href="https://github.com/valstu/follari">Github</a> / Twitter: <a href="https://twitter.com/valtterikaresto">@valtterikaresto</a></span>
+        <span>
+          Viimeksi päivitetty:{' '}
+          {dayjs(lastupdate * 1000).format('DD.MM.YYYY [klo] HH:mm:ss')}
+        </span>
+        <span>
+          Fork me at <a href="https://github.com/valstu/follari">Github</a> /
+          Twitter:{' '}
+          <a href="https://twitter.com/valtterikaresto">@valtterikaresto</a>
+        </span>
       </Footer>
     </SidebarContainer>
   );
 };
 
 Sidebar.propTypes = {
-  racks: arrayOf(shape({
-    id: string,
-    stopCode: string,
-    name: string,
-    lat: number,
-    lon: number,
-    bikesAvail: number,
-    slotsTotal: number
-  })),
+  racks: arrayOf(
+    shape({
+      id: string,
+      stopCode: string,
+      name: string,
+      lat: number,
+      lon: number,
+      bikesAvail: number,
+      slotsTotal: number,
+    }),
+  ),
   lastupdate: number,
   bikesTotalAvail: number,
   onHover: func.isRequired,
   onHoverEnd: func.isRequired,
   onListItemClick: func.isRequired,
-}
+};
 
 Sidebar.defaultProps = {
   racks: [],
   lastupdate: Math.round(new Date().valueOf() / 1000),
   bikesTotalAvail: 0,
-}
+};
 
 export default Sidebar;
