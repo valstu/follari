@@ -89,6 +89,21 @@ class Home extends Component {
     this.setState(prevState => ({ ...prevState, position }));
   onDragEnd = position =>
     this.setState(prevState => ({ ...prevState, position }));
+  onRackInteract = (rackId, interaction) => {
+    switch (interaction) {
+      case 'mouseover':
+        this.setState({ activeId: rackId });
+        break;
+      case 'mouseout':
+        this.setState({ activeId: null });
+        break;
+      case 'click':
+        // Available, but not used yet
+        break;
+      default:
+        break;
+    }
+  };
 
   render() {
     const { activeId, position } = this.state;
@@ -112,12 +127,14 @@ class Home extends Component {
                 onHover={this.onHover}
                 onHoverEnd={this.onHoverEnd}
                 onListItemClick={this.onListItemClick}
+                activeId={activeId}
               />
               <Map
                 position={position}
                 activeId={activeId}
                 racks={data.racksQuery.racks}
                 onDragEnd={this.onDragEnd}
+                onRackInteract={this.onRackInteract}
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${
                   process.env.REACT_APP_GOOGLE_MAPS_APIKEY
                 }&v=3.exp&libraries=geometry,drawing,places`}

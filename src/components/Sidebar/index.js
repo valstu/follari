@@ -3,6 +3,7 @@ import { string, number, arrayOf, shape, func } from 'prop-types';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import orderby from 'lodash.orderby';
+import cx from 'classnames';
 
 const SidebarContainer = styled.div`
   display: flex;
@@ -70,8 +71,12 @@ const RackListItem = styled.li`
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #eee;
   cursor: pointer;
-  &:hover {
+  &:hover,
+  &.highlight {
     background: #f6f6f6;
+  }
+  &.highlight h3 {
+    color: #f00;
   }
   &:last-child {
     border-bottom: 0;
@@ -138,6 +143,7 @@ const Sidebar = ({
   racks,
   lastupdate,
   bikesTotalAvail,
+  activeId,
   onHover,
   onHoverEnd,
   onListItemClick,
@@ -147,6 +153,7 @@ const Sidebar = ({
   const renderRacks = orderedRacks.map(rack => (
     <RackListItem
       key={rack.id}
+      className={cx({ highlight: rack.id === activeId })}
       onMouseEnter={() => onHover(rack.id)}
       onMouseLeave={() => onHoverEnd()}
       onClick={() => onListItemClick({ lat: rack.lat, lng: rack.lon })}
@@ -204,6 +211,7 @@ Sidebar.propTypes = {
       slotsTotal: number,
     }),
   ),
+  activeId: string,
   lastupdate: number,
   bikesTotalAvail: number,
   onHover: func.isRequired,
@@ -215,6 +223,7 @@ Sidebar.defaultProps = {
   racks: [],
   lastupdate: Math.round(new Date().valueOf() / 1000),
   bikesTotalAvail: 0,
+  activeId: null,
 };
 
 export default Sidebar;
