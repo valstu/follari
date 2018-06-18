@@ -105,6 +105,7 @@ const Footer = styled.div`
   flex-direction: column;
   border-top: 1px solid #eee;
   span {
+    display: inline-block;
     margin-bottom: 10px;
     line-height: 1.75;
     font-weight: 400;
