@@ -8,6 +8,7 @@
     "apollo-boost": "^0.1.9",
     "apollo-link-rest": "^0.3.1",
     "camelcase": "~3.0.0",
+    "classnames": "^2.2.6",
     "dayjs": "^1.6.9",
     "graphql": "^0.13.2",
     "lodash.orderby": "^4.6.0",
