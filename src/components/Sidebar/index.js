@@ -12,10 +12,10 @@ const SidebarContainer = styled.div`
   height: 55vh;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  justify-content: space-between;
   @media (min-width: 768px) {
+    justify-content: space-between;
     height: 100vh;
-    width: 360px;
+    width: 380px;
   }
 `;
 
@@ -47,19 +47,15 @@ const Subtitle = styled.h2`
 `;
 
 const Header = styled.div`
-  display: flex;
-  flex-direction: column;
   padding: 1rem;
   text-align: left;
 `;
 
 const RackList = styled.ul`
-  display: flex;
-  flex: 1 1 0;
-  flex-direction: column;
   list-style: none;
   padding: 0;
   margin: 0;
+  overflow: visible;
   border-top: 1px solid #eee;
   @media (min-width: 768px) {
     border-bottom: 1px solid #eee;
@@ -104,18 +100,18 @@ const RackListItemContent = styled.div`
 `;
 
 const Footer = styled.div`
-  display: none;
   padding: 1rem;
   font-size: 0.75rem;
   flex-direction: column;
+  border-top: 1px solid #eee;
   span {
     margin-bottom: 10px;
+    line-height: 1.75;
+    font-weight: 400;
+    font-size: 9px;
   }
   span:last-child {
     margin-bottom: 0px;
-  }
-  @media (min-width: 768px) {
-    display: flex;
   }
 `;
 
@@ -193,6 +189,12 @@ const Sidebar = ({
           Fork me at <a href="https://github.com/valstu/follari">Github</a> /
           Twitter:{' '}
           <a href="https://twitter.com/valtterikaresto">@valtterikaresto</a>
+          <br />
+        </span>
+        <span>
+          Aineisto on ladattu palvelusta{' '}
+          <a href="http://data.foli.fi/">http://data.foli.fi/</a> lisenssillä
+          Creative Commons Nimeä 4.0 Kansainvälinen (CC BY 4.0).
         </span>
       </Footer>
     </SidebarContainer>
