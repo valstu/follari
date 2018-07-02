@@ -9,6 +9,7 @@ import {
 } from 'react-google-maps';
 import { getColor } from '../Sidebar';
 import mapStyle from './mapStyle';
+import { FONT_FAMILY } from '../../styleConstants';
 
 const Icon = (available, active) => {
   const encoded =
@@ -61,7 +62,7 @@ const Map = withScriptjs(
             label={{
               text: rack.bikesAvail.toString(),
               color: 'white',
-              fontFamily: 'IBM Plex Mono',
+              fontFamily: FONT_FAMILY,
               fontSize: '12px',
             }}
             icon={Icon(rack.bikesAvail, activeId === rack.id)}
