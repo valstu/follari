@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ibm/plex": "^1.0.2",
     "@reach/router": "^1.1.1",
     "apollo-boost": "^0.1.9",
     "apollo-link-rest": "^0.3.1",

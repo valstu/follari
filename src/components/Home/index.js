@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import styled from 'styled-components';
 import Map from '../Map';
 import Sidebar from '../Sidebar';
+import { FONT_FAMILY } from '../../styleConstants';
 
 const GET_RACKS = gql`
   query GetRacks {
@@ -42,8 +43,7 @@ const Container = styled.div`
   flex-direction: column-reverse;
   font-weight: 300;
   height: 100vh;
-  font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono',
-    'Bitstream Vera Sans Mono', Courier, monospace;
+  font-family: ${FONT_FAMILY};
   @media (min-width: 768px) {
     flex-direction: row;
   }
@@ -66,8 +66,7 @@ const Loading = styled.div`
   justify-items: center;
   justify-content: center;
   align-items: center;
-  font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono',
-    'Bitstream Vera Sans Mono', Courier, monospace;
+  font-family: ${FONT_FAMILY};
   span {
     font-size: 10rem;
   }
