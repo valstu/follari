@@ -72,6 +72,12 @@ const Loading = styled.div`
   }
 `;
 
+const ErrorContainer = styled.h1`
+  text-align: center;
+  font-weight: 500;
+  font-family: ${FONT_FAMILY};
+`;
+
 class Home extends Component {
   state = {
     activeId: null,
@@ -117,7 +123,11 @@ class Home extends Component {
             );
           }
           if (error) {
-            return <h1>Error occured</h1>;
+            return (
+              <ErrorContainer>
+                {error.message || '500 Palvelinvirhe'}
+              </ErrorContainer>
+            );
           }
           return (
             <Container>
