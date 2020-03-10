@@ -115,7 +115,8 @@ class Home extends Component {
     return (
       <Query query={GET_RACKS}>
         {({ loading, error, data }) => {
-          if (loading) {
+          if (loading || !data.racksQuery) {
+            console.log(data);
             return (
               <Loading>
                 <h3>Ladataan...</h3>
@@ -129,6 +130,7 @@ class Home extends Component {
               </ErrorContainer>
             );
           }
+          console.log(data.racksQuery);
           return (
             <Container>
               <Sidebar

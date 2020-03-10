@@ -12,13 +12,14 @@ const typePatcher = {
     }
 
     const racksArr = Object.keys(data.racks).map(key => {
-      if (data.racks[key] === null) {
+      if (!data.racks[key]) {
         return null;
       }
       return {
         ...data.racks[key],
         __typename: 'Rack',
         stopCode: data.racks[key].stopCode || null,
+        slotsTotal: data.racks[key].slotsTotal || null,
       };
     });
 
